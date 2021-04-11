@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS TBL_FAVOURATE_ACCOUNTS;
+ 
+CREATE TABLE TBL_FAVOURATE_ACCOUNTS(
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  payee_account_number number(18) NOT NULL,
+  account_holder_name VARCHAR(250) NOT NULL,
+  bank_name VARCHAR(250) DEFAULT NULL,
+  account_id number(18) NOT NULL
+);
