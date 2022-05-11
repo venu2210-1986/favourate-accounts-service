@@ -1,0 +1,12 @@
+eventHub:
+  connectionString: Endpoint=sb://venu-name.servicebus.windows.net/;SharedAccessKeyName=venu-policy;SharedAccessKey=/H3XhYJL2wuDXpm5qKB+hFY6uVtPnQRHGnRzEFN3KBE=;EntityPath=venu-event
+  name: venu-event
+  storage:
+    consumerGroupName: venu
+    storageConnectionString: DefaultEndpointsProtocol=https;AccountName=venustorageaccount123;AccountKey=hwJe3Vf4d6q83XYmEwLYc06mzBSpJeSvcoVw6V0r8hteELf8SyA1KKzI/0dYC4U5SvLj+ddP5Jer+AStSeAFSw==;EndpointSuffix=core.windows.net
+    storageContainerName: venustorageaccount123
+    hostNamePrefix: venuPrefix
+
+logging:
+  level:
+    com.microsoft.azure.*: ERROR
