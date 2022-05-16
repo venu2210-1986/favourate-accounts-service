@@ -1,4 +1,4 @@
-Test Data
+http://localhost:8080/eventhub/send
 
 {
   "firstName": "test",
