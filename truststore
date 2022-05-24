@@ -1,0 +1,12 @@
+add application.properteis 
+
+server.ssl.trust-store=classpath:cacerts.jks
+server.ssl.trust-store-password=changeit
+
+Generete one truststore file 
+
+keytool -genkey -alias server-alias -keyalg RSA -keypass changeit -storepass changeit -keystore E:\\WorkArea\\WorkSpace\\EventHub\\keystore.jks
+
+keytool -export -alias server-alias -storepass changeit -file E:\\WorkArea\\WorkSpace\\EventHub\\server.cer -keystore E:\\WorkArea\\WorkSpace\\EventHub\\keystore.jks
+
+keytool -import -v -trustcacerts -alias server-alias -file E:\\WorkArea\\WorkSpace\\EventHub\\server.cer -keystore E:\\WorkArea\\WorkSpace\\EventHub\\cacerts.jks -keypass changeit -storepass changeit
