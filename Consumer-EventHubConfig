@@ -39,3 +39,15 @@ public class EventHubConfig {
                 .build();
     }
 }
+
+
+======================================
+Add below code 
+
+@Bean
+	public EventHubProducerAsyncClient  createEventHubProcessorHost1() {
+		EventHubProducerAsyncClient producer = new EventHubClientBuilder().
+				transportType(AmqpTransportType.AMQP_WEB_SOCKETS).connectionString(connectionString)
+				.buildAsyncProducerClient();
+		return producer;
+	}
