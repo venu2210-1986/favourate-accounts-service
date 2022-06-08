@@ -25,3 +25,43 @@ public class EventProcessorHostService {
         eventProcessorHost.registerEventProcessor(EventProcessor.class, options).get();
     }
 }
+===============================================================
+New chnages
+======================================
+mport java.util.concurrent.ExecutionException;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.dublin.eventhub.demo.exception.ErrorNotificationHandler;
+import com.dublin.eventhub.demo.processor.EventPayloadProcessor;
+import com.dublin.eventhub.demo.processor.EventProcessor;
+import com.microsoft.azure.eventprocessorhost.EventProcessorHost;
+import com.microsoft.azure.eventprocessorhost.EventProcessorOptions;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Component
+public class EventProcessorHostService {
+
+	@Autowired
+    private  EventProcessorHost eventProcessorHost;
+	
+	@Autowired
+    private EventProcessorFactory eventProcessorFactory;
+   
+ 
+    @PostConstruct
+    public void run() throws ExecutionException, InterruptedException {
+        System.out.println("Setting up event hub {}"+ eventProcessorHost.getHostName());
+        EventProcessorOptions options = new EventProcessorOptions();
+        options.setExceptionNotification(new ErrorNotificationHandler());
+       // eventProcessorHost.registerEventProcessor(EventProcessor.class, options).get();
+        eventProcessorHost.registerEventProcessorFactory(eventProcessorFactory);
+
+        System.out.println("Event Processer registor");
+    }
+}
