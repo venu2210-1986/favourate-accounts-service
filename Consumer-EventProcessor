@@ -41,3 +41,12 @@ public class EventProcessor implements IEventProcessor {
     public void onError(PartitionContext partitionContext, Throwable throwable) {
     }
 }
+==========================
+New Code 
+=====================
+ private EventPayloadProcessor processingservice;
+
+	    // constructor injection of mandatory dependencies
+	    public EventProcessor(EventPayloadProcessor processingService) {
+	        this.processingservice = processingService;
+	    }
