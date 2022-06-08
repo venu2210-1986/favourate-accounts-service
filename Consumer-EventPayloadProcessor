@@ -11,3 +11,30 @@ class EventPayloadProcessor {
         log.info("Hello! My name is {} and my favorite food is {}", eventPayload.getFirstName(), eventPayload.getFavoriteFood());
     }
 }
+==============================================
+New Code changes
+==================================
+package com.dublin.eventhub.demo.processor;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dublin.eventhub.demo.model.EventPayload;
+import com.dublin.eventhub.demo.service.EventHubService;
+
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@NoArgsConstructor
+@Service
+public class EventPayloadProcessor {
+	@Autowired
+	private EventHubService service;
+
+    void process(EventPayload eventPayload) {
+    	 System.out.println("Hello! My name is {} and my favorite food is {}"
+    			 +eventPayload.getFirstName()+eventPayload.getFavoriteFood());
+    	 service.sendEvent(null);
+    }
+}
